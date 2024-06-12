@@ -1,22 +1,107 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrian</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>恋爱计时器 & 考研加油</title>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+            font-size: 85%;
+            margin: 0;
+			width:100%;
+			height:100%;
+			/*
+			background-image: url('1.jpg') no-repeat;
+			background-size:100%;*/
+        }
+       
+        h2 {
+            font-size: 220%;
+            font-weight: 400;
+        }
+        
+        .content {
+            position: absolute;
+            width: 100%;
+            top: 25%;
+            transform: translate(0, -50%);
+            text-align: center;
+        }
+        
+        .timer {
+            font-size: 180%;
+            line-height: 1.5;
+            margin: 1em 0;
+        }
+        
+        .timer b {
+            color: rgb(253, 99, 125);
+        }
+    </style>
 </head>
+
 <body>
-    <div class="card">
-        <h1 class="title">Feliz dia dos namorados!</h1>
-        <div class="animation">
-            <img src="images/cat-01.gif" alt="San Valentin" class="cat img-fluid">
-        </div>
-        <div class="text"></div>
-        <button class="button">Si</button>
-        <button class="button button__negative">No</button>
-        <button class="button button__error">Error debemos reiniciar</button>
-    </div>
-    <script src="script.js"></script>
+	<div id="Layer1" style="position:fixed; left:0px; top:0px; width:100%; height:100%">  
+		<img src="bg.jpg" width="100%" height="100%"/>
+	</div>
+	<div class="content">
+		<h2>Tempo de Adrian</h2>
+		<div class="timer">
+			<b id="d"></b> Dias <b id="h"></b> Horas <b id="m"></b> Minutos <b id="s"></b> Segundos
+		</div>
+		
+		<h3> Não há mais ninguém no mundo com quem eu gostaria de compartilhar este momento. Obrigada por escolher ficar e continuar.  
+                                                                           Eu escolho você para ser o amor da minha vida.</h3>
+		<h1 style="color:#EA0000">Amo você！</h1>
+	</div>
+    <script>
+        function timer() {
+            
+            var date1= '2023/07/07 20:00:00';  //开始时间
+            var date2 = new Date();    //结束时间
+            var date3 = date2.getTime() - new Date(date1).getTime();   //时间差的毫秒数      
+
+            //------------------------------
+
+            //计算出相差天数
+            var days=Math.floor(date3/(24*3600*1000))
+
+            //计算出小时数
+
+            var leave1=date3%(24*3600*1000)    //计算天数后剩余的毫秒数
+            var hours=Math.floor(leave1/(3600*1000))
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            //计算相差分钟数
+            var leave2=leave1%(3600*1000)        //计算小时数后剩余的毫秒数
+            var minutes=Math.floor(leave2/(60*1000))
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            //计算相差秒数
+            var leave3=Math.floor(leave2%(60*1000)/1000)      //计算分钟数后剩余的毫秒数
+            if (leave3 < 10) {
+                leave3 = "0" + leave3;
+            }
+            
+            document.getElementById('d').innerHTML = days;
+            document.getElementById('h').innerHTML = hours;
+            document.getElementById('m').innerHTML = minutes;
+            document.getElementById('s').innerHTML = leave3;
+        }
+        timer();
+        setInterval(timer, 1000);
+    </script>
+
+
 </body>
+
 </html>
