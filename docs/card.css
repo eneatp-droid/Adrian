@@ -18,7 +18,7 @@ body {
 .envelope {
   content: url(https://assets.codepen.io/4927073/Envelope3.png);
   width: 430px;
-  position: absolute ;
+  position: absolute;
   left: 18%;
   top: 3%;
   filter: drop-shadow(1.5px 0.75px 1.75px #4d4d4d);
